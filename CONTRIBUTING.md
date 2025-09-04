@@ -92,7 +92,7 @@ Follow conventional commits format:
 - `style:` for formatting changes
 - `refactor:` for code refactoring
 - `test:` for adding tests
-- `ci:` for CI/CD changes
+- `chore:` for maintenance tasks
 
 ### File Structure
 

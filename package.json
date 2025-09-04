@@ -6,7 +6,6 @@
   "keywords": ["ieee", "student-branch", "react", "typescript", "tailwindcss", "website", "responsive"],
   "author": "Ayush Singh <ayushsingh08.ds@gmail.com>",
   "license": "MIT",
-  "homepage": "https://ayushsingh08-ds.github.io/ieee-its-2025-website",
   "repository": {
     "type": "git",
     "url": "https://github.com/ayushsingh08-ds/ieee-its-2025-website.git"
