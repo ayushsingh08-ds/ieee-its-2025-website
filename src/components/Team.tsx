@@ -1,139 +1,109 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 interface TeamMember {
   name: string;
   role: string;
+  image: string;
 }
 
 const Team: React.FC = () => {
   const teamMembers: TeamMember[] = [
-    { name: "John Doe", role: "Student Representative" },
-    { name: "Jane Smith", role: "Vice President" },
-    { name: "Michael Brown", role: "Secretary" },
-    { name: "Emily Davis", role: "Treasurer" },
+    { name: "Vedeshwari Nakate", role: "Chair", image: "pics/image.jpeg" },
+    { name: "Jeevitha A M", role: "Vice-Chair", image: "pics/jeevitha.jpg" },
+    { name: "Lakshmi", role: "Secretary", image: "pics/lakshmi.jpg" },
+    { name: "Sai Krishna", role: "Treasurer", image: "pics/sai.jpg" },
+    { name: "Ayush Singh", role: "Web Master", image: "pics/ayush.jpg" },
+    { name: "Mansi Sharma", role: "Web Master", image: "pics/mansi.jpg" },
+    { name: "Anuja Shinde", role: "Web Master", image: "pics/anuja.jpg" },
+    { name: "Sadgi Jaiswal", role: "Membership Chair", image: "pics/sadgi.jpg" },
+    { name: "Soumya Smriti", role: "Sponsorship Chair", image: "pics/soumya.jpg" },
+    { name: "Prabhu Shiva", role: "Event Coordinator", image: "pics/prabhu.jpg" },
+    { name: "Hemanth Hariteja", role: "Event Coordinator", image: "pics/hemanth.jpg" },
+    { name: "Kanchi Joshitha", role: "Event Coordinator", image: "pics/kanchi.jpg" },
   ];
 
+  const [showAll, setShowAll] = useState(false);
+  const visibleMembers = showAll ? teamMembers : teamMembers.slice(0, 4);
+
+  // 🎯 3D Tilt Effect
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    card: HTMLDivElement | null
+  ) => {
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / 20) * -1;
+    const rotateY = (x - centerX) / 20;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  };
+
+  const resetTilt = (card: HTMLDivElement | null) => {
+    if (!card) return;
+    card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  };
+
   return (
-    <section
-      id="team"
-      className="bg-gray-50 py-20 px-6"
-      style={{
-        backgroundColor: "#f9fafb",
-        padding: "5rem 1.5rem",
-        minHeight: "80vh",
-      }}
-    >
-      <div
-        className="container mx-auto"
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        <h2
-          className="text-4xl font-bold text-gray-800 text-center mb-16"
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "#1f2937",
-            textAlign: "center",
-            marginBottom: "4rem",
-            lineHeight: "1.2",
-          }}
-        >
+    <section id="team" className="bg-[#f2f5f8] py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold text-gray-800 text-center mb-16">
           Meet the Team
         </h2>
 
-        <div
-          className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "2rem",
-            maxWidth: "72rem",
-            margin: "0 auto",
-          }}
-        >
-          {teamMembers.map((member, index) => (
-            <div
+        {/* Team Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 perspective-1000">
+          {visibleMembers.map((member, index) => (
+            <motion.div
               key={index}
-              className="text-center"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }} // staggered fade
+              className="relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 flex flex-col"
               style={{
-                textAlign: "center",
-                padding: "1.5rem",
-                backgroundColor: "white",
-                borderRadius: "1rem",
-                boxShadow:
-                  "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                transformStyle: "preserve-3d",
+                transition: "transform 0.2s ease-out",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-8px)";
-                e.currentTarget.style.boxShadow =
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)";
-              }}
+              onMouseMove={(e: React.MouseEvent<HTMLDivElement>) =>
+                handleMouseMove(e, e.currentTarget as HTMLDivElement)
+              }
+              onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) =>
+                resetTilt(e.currentTarget as HTMLDivElement)
+              }
             >
-              {/* Profile Image Placeholder */}
-              <div
-                className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-6 flex items-center justify-center"
-                style={{
-                  width: "8rem",
-                  height: "8rem",
-                  backgroundColor: "#d1d5db",
-                  borderRadius: "50%",
-                  margin: "0 auto 1.5rem auto",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "linear-gradient(135deg, #93c5fd, #3b82f6)",
-                }}
-              >
-                <svg
-                  className="w-16 h-16 text-gray-500"
-                  fill="white"
-                  viewBox="0 0 20 20"
-                  style={{
-                    width: "4rem",
-                    height: "4rem",
-                    color: "white",
-                  }}
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
+              {/* Profile Image */}
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-[420px] object-cover"
+              />
 
-              <h3
-                className="text-lg font-bold text-gray-800 mb-2"
-                style={{
-                  fontSize: "1.125rem",
-                  fontWeight: "bold",
-                  color: "#1f2937",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {member.name}
-              </h3>
-              <p
-                className="text-gray-600"
-                style={{
-                  color: "#4b5563",
-                  fontSize: "0.875rem",
-                  lineHeight: "1.5",
-                }}
-              >
-                {member.role}
-              </p>
-            </div>
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 left-6 flex flex-col gap-2">
+                <span className="bg-blue-900 text-white text-base font-semibold px-4 py-1.5 rounded-full shadow-md">
+                  {member.name}
+                </span>
+                <span className="bg-white text-gray-700 text-sm font-medium px-3 py-1 rounded-full shadow-md">
+                  {member.role}
+                </span>
+              </div>
+            </motion.div>
           ))}
+        </div>
+
+        {/* View More / View Less Button */}
+        <div className="text-center mt-10">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-2 bg-blue-900 text-white font-semibold rounded-full shadow-md hover:bg-blue-800 transition"
+          >
+            {showAll ? "View Less" : "View More"}
+          </button>
         </div>
       </div>
     </section>

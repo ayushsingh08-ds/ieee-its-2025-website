@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "description": "A modern, responsive website for the IEEE Student Branch featuring event information, team details, and contact information.",
-  "keywords": ["ieee", "student-branch", "react", "typescript", "tailwindcss", "website", "responsive"],
+  "keywords": [
+    "ieee",
+    "student-branch",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "website",
+    "responsive"
+  ],
   "author": "Ayush Singh <ayushsingh08.ds@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -22,9 +30,10 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
+    "framer-motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
