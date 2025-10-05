@@ -1,237 +1,42 @@
-/* IEEE Website - Responsive Design System */
-
-/* === BASE RESPONSIVE SETUP === */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-body {
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-/* === RESPONSIVE TYPOGRAPHY === */
-:root {
-  /* Mobile First Typography */
-  --text-xs: clamp(0.75rem, 2vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 2.5vw, 1rem);
-  --text-base: clamp(1rem, 3vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 3.5vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 4vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 5vw, 2rem);
-  --text-3xl: clamp(2rem, 6vw, 2.5rem);
-  --text-4xl: clamp(2.5rem, 7vw, 3rem);
-  --text-5xl: clamp(3rem, 8vw, 4rem);
-  
-  /* Responsive Spacing */
-  --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
-  --spacing-sm: clamp(0.5rem, 2vw, 1rem);
-  --spacing-md: clamp(1rem, 3vw, 1.5rem);
-  --spacing-lg: clamp(1.5rem, 4vw, 2rem);
-  --spacing-xl: clamp(2rem, 5vw, 3rem);
-  --spacing-2xl: clamp(3rem, 6vw, 4rem);
-  --spacing-3xl: clamp(4rem, 8vw, 6rem);
-}
-
-/* === RESPONSIVE BREAKPOINTS === */
-/* Mobile: 0-640px */
-/* Tablet: 641-1024px */
-/* Desktop: 1025px+ */
-
-/* === MOBILE OPTIMIZATIONS === */
-@media (max-width: 640px) {
-  body {
-    font-size: 14px;
-    line-height: 1.5;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  /* Touch-friendly buttons */
-  button, .btn {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 0.75rem 1rem;
-  }
-  
-  /* Improved text readability */
-  p, span, div {
-    line-height: 1.6;
-  }
-  
-  /* Prevent horizontal scroll */
-  img, video, iframe {
-    max-width: 100%;
-    height: auto;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* === TABLET OPTIMIZATIONS === */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  /* Grid layouts for tablets */
-  .grid-responsive {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
   }
 }
 
-/* === DESKTOP OPTIMIZATIONS === */
-@media (min-width: 1025px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  .grid-responsive {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
+.card {
+  padding: 2em;
 }
 
-/* === RESPONSIVE UTILITIES === */
-.w-full { width: 100%; }
-.max-w-full { max-width: 100%; }
-.overflow-hidden { overflow: hidden; }
-.overflow-x-hidden { overflow-x: hidden; }
-
-/* Responsive padding classes */
-.p-responsive { padding: var(--spacing-sm); }
-.px-responsive { padding-left: var(--spacing-sm); padding-right: var(--spacing-sm); }
-.py-responsive { padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
-
-.p-responsive-lg { padding: var(--spacing-lg); }
-.px-responsive-lg { padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
-.py-responsive-lg { padding-top: var(--spacing-lg); padding-bottom: var(--spacing-lg); }
-
-/* Responsive margin classes */
-.m-responsive { margin: var(--spacing-sm); }
-.mx-responsive { margin-left: var(--spacing-sm); margin-right: var(--spacing-sm); }
-.my-responsive { margin-top: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
-
-/* === ENHANCED BUTTON ANIMATIONS === */
-button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-tap-highlight-color: transparent;
-}
-
-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-@media (max-width: 640px) {
-  button:hover {
-    transform: none; /* Disable hover effects on mobile */
-  }
-  
-  button:active {
-    transform: scale(0.98);
-  }
-}
-
-/* === ENHANCED CARD SHADOWS === */
-.card-shadow {
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-shadow:hover {
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-@media (max-width: 640px) {
-  .card-shadow {
-    box-shadow: 
-      0 2px 4px -1px rgba(0, 0, 0, 0.1), 
-      0 1px 2px -1px rgba(0, 0, 0, 0.06);
-  }
-  
-  .card-shadow:hover {
-    box-shadow: 
-      0 8px 15px -3px rgba(0, 0, 0, 0.1), 
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* === RESPONSIVE GRID SYSTEM === */
-.grid-1 { display: grid; grid-template-columns: 1fr; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
-
-@media (max-width: 640px) {
-  .grid-2, .grid-3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* === ACCESSIBILITY IMPROVEMENTS === */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .card-shadow {
-    border: 2px solid currentColor;
-  }
-}
-
-/* === FOCUS STATES === */
-*:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-button:focus,
-a:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-/* === PRINT STYLES === */
-@media print {
-  * {
-    background: white !important;
-    color: black !important;
-    box-shadow: none !important;
-  }
-  
-  .no-print {
-    display: none !important;
-  }
+.read-the-docs {
+  color: #888;
 }
