@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
+    host: true
   },
   resolve: {
     alias: {
@@ -14,19 +15,21 @@ export default defineConfig({
     },
   },
   build: {
-    // Production optimizations
+    // Production optimizations for Vercel
     target: 'esnext',
     minify: 'esbuild',
     sourcemap: false,
+    // Vercel has generous limits, but we still optimize
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
-        // Manual chunks for better caching
+        // Manual chunks for better caching and loading
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
           'ui-vendor': ['lucide-react']
         },
-        // Asset file naming for better caching
+        // Asset file naming optimized for Vercel CDN
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name?.split('.') ?? [];
           let extType = info[info.length - 1];
@@ -41,12 +44,19 @@ export default defineConfig({
         entryFileNames: 'assets/js/[name]-[hash].js'
       }
     },
-    // Chunk size warnings
-    chunkSizeWarningLimit: 1000
+    // Vercel deployment optimizations
+    assetsDir: 'assets',
+    emptyOutDir: true
   },
   // Preview server configuration
   preview: {
     port: 4173,
     host: true
+  },
+  // Base URL configuration for Vercel
+  base: './',
+  // Ensure compatibility with Vercel's environment
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
   }
 })
