@@ -5,6 +5,7 @@
 ### Method 1: GitHub Integration (Recommended)
 
 1. **Commit and push your changes:**
+
    ```bash
    git add .
    git commit -m "Vercel deployment optimization"
@@ -44,12 +45,14 @@ The project includes optimized settings:
 ## 🔧 Build Optimizations
 
 ✅ **Performance**:
+
 - Code splitting with manual chunks
 - Asset optimization and caching headers
 - Tree shaking and minification
 - Font and image optimization
 
 ✅ **Vercel-Specific**:
+
 - SPA routing configuration
 - Cache-Control headers for static assets
 - Build output optimized for Vercel CDN
@@ -66,7 +69,7 @@ After deployment:
 ## 📊 Performance Features
 
 - **Edge Network**: Global CDN distribution
-- **Automatic HTTPS**: SSL certificates included  
+- **Automatic HTTPS**: SSL certificates included
 - **Image Optimization**: Built-in image processing
 - **Build Caching**: Faster subsequent deployments
 - **Preview Deployments**: Test branches automatically
@@ -74,6 +77,7 @@ After deployment:
 ## 🔄 Continuous Deployment
 
 Every push to `main` branch triggers:
+
 1. Automatic build on Vercel
 2. Production deployment
 3. Cache invalidation
