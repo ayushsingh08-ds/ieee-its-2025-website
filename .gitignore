@@ -22,3 +22,30 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts
+.vite
+.cache
+.temp
+.tmp
+
+# Production deployment
+.vercel
+.netlify
+.firebase
+.aws-sam
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Miscellaneous
+*.zip
+*.tar.gz

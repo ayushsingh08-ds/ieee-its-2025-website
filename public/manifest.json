@@ -1,0 +1,22 @@
+{
+  "name": "IEEE ITS Student Chapter 2025",
+  "short_name": "IEEE ITS 2025",
+  "description": "Driving innovation in Intelligent Transportation Systems through cutting-edge research, collaborative projects, and advancing the future of smart mobility solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "technology", "research"],
+  "lang": "en",
+  "scope": "/",
+  "screenshots": []
+}
