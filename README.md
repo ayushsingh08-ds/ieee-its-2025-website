@@ -1,8 +1,34 @@
-# 🚀 IEEE ITS Student Chapter 2025 Website
+# 🚀 IEEE Information Theory Society Student Chapter 2025
 
 > **Status: ✅ RENDER-READY** - Production optimized and deployment ready
 
-A modern, interactive website for the IEEE Intelligent Transportation Systems Student Chapter featuring a stunning 3D model viewer built with React + TypeScript + Vite.
+A modern, interactive website for the IEEE Information Theory Society (ITSoc) Student Chapter featuring cutting-edge 3D visualization, comprehensive research content, and academic excellence built with React + TypeScript + Vite.
+
+## 🔬 Information Theory Focus
+
+### Research Areas Covered:
+
+- **Shannon Theory & Fundamental Limits** - Mathematical foundations of information and communication
+- **Coding & Source Compression** - Error-correcting codes, data compression, encoding methods
+- **Estimation, Detection & Inference** - Signal processing and statistical inference
+- **Communication Networks & Multi-User Systems** - Network information theory and protocols
+- **Cryptography & Information Security** - Secure communication and data protection
+- **Applications in Machine Learning, Biology, and Data Science** - Cross-disciplinary applications
+
+### Historical Milestones:
+
+- **1951**: First meeting as IRE Professional Group on Information Theory
+- **1963**: Renamed to IEEE Professional Technical Group on Information Theory
+- **1964**: Became IEEE Information Theory Group
+- **1989**: Formal establishment of IEEE Information Theory Society
+
+### Membership Benefits:
+
+- Access to IEEE Transactions on Information Theory
+- Participation in workshops, tutorials, and conferences
+- Networking with researchers, faculty, and professionals
+- Travel grants, awards, and student competitions
+- Digital archives, resources, and lecture materials
 
 Currently, two official plugins are available:
 

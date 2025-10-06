@@ -2,7 +2,6 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Introduction from "./components/Introduction";
 import UpcomingEvents from "./components/UpcomingEvents";
-import EventHighlight from "./components/EventHighlight";
 import BlogNews from "./components/BlogNews";
 import ClickSpark from "./components/ClickSpark";
 import "./App.css";
@@ -16,7 +15,6 @@ function App() {
           <Hero />
           <Introduction />
           <UpcomingEvents />
-          <EventHighlight />
           <BlogNews />
         </main>
       </ClickSpark>

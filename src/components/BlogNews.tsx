@@ -8,79 +8,15 @@ import {
   Calendar,
   User,
 } from "lucide-react";
+import { BLOG_POSTS_DATA, BLOG_CATEGORIES } from "../data/blogData";
 import "./styles/BlogNews.css";
 
 const BlogNews: React.FC = () => {
   const [likedPosts, setLikedPosts] = useState<number[]>([]);
   const [bookmarkedPosts, setBookmarkedPosts] = useState<number[]>([]);
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of Autonomous Vehicles: Challenges and Opportunities",
-      excerpt:
-        "Exploring the latest developments in self-driving technology and the key challenges that researchers and engineers face in creating safer, more efficient autonomous vehicles.",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      author: "Dr. Emily Rodriguez",
-      date: "2025-10-28",
-      readTime: "8 min read",
-      category: "Research",
-      likes: 42,
-      comments: 18,
-      views: 1250,
-      tags: ["Autonomous Vehicles", "AI", "Safety"],
-    },
-    {
-      id: 2,
-      title: "Smart Traffic Management: Reducing Urban Congestion with AI",
-      excerpt:
-        "How artificial intelligence and machine learning algorithms are being used to optimize traffic flow and reduce congestion in major cities worldwide.",
-      image:
-        "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      author: "Prof. Michael Chen",
-      date: "2025-10-25",
-      readTime: "6 min read",
-      category: "Technology",
-      likes: 38,
-      comments: 12,
-      views: 980,
-      tags: ["Smart Cities", "Traffic Management", "Machine Learning"],
-    },
-    {
-      id: 3,
-      title:
-        "Electric Vehicle Infrastructure: Building the Network of Tomorrow",
-      excerpt:
-        "An in-depth look at the challenges and solutions for creating a comprehensive electric vehicle charging infrastructure to support the transition to sustainable transportation.",
-      image:
-        "https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      author: "Sarah Johnson",
-      date: "2025-10-22",
-      readTime: "10 min read",
-      category: "Sustainability",
-      likes: 56,
-      comments: 24,
-      views: 1580,
-      tags: ["Electric Vehicles", "Infrastructure", "Sustainability"],
-    },
-    {
-      id: 4,
-      title: "Connected Vehicles: The IoT Revolution in Transportation",
-      excerpt:
-        "Discover how Internet of Things (IoT) technology is transforming vehicles into smart, connected devices that communicate with infrastructure and other vehicles.",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      author: "Alex Thompson",
-      date: "2025-10-20",
-      readTime: "7 min read",
-      category: "Innovation",
-      likes: 33,
-      comments: 15,
-      views: 920,
-      tags: ["IoT", "Connected Vehicles", "V2X Communication"],
-    },
-  ];
+  // Use data from centralized data file (you can also use getRecentBlogPosts() for latest posts)
+  const blogPosts = BLOG_POSTS_DATA;
 
   const handleLike = (postId: number) => {
     setLikedPosts((prev) =>
@@ -106,14 +42,16 @@ const BlogNews: React.FC = () => {
     });
   };
 
-  const getCategoryColor = (category: string) => {
+  const getCategoryColor = (category: keyof typeof BLOG_CATEGORIES) => {
     const colors = {
-      Research: "#10b981",
-      Technology: "#3b82f6",
-      Sustainability: "#8b5cf6",
-      Innovation: "#f59e0b",
+      RESEARCH: "#10b981",
+      APPLICATIONS: "#3b82f6",
+      QUANTUM: "#8b5cf6",
+      NETWORKS: "#f59e0b",
+      THEORY: "#ec4899",
+      TUTORIAL: "#06b6d4",
     };
-    return colors[category as keyof typeof colors] || "#6b7280";
+    return colors[category] || "#6b7280";
   };
 
   return (
@@ -123,14 +61,15 @@ const BlogNews: React.FC = () => {
         <div className="blog-news-header">
           <div className="section-badge">
             <MessageCircle className="badge-icon" />
-            Latest Insights
+            Publications & Research
           </div>
           <h2 className="section-title">
-            Recent Posts &<span className="title-accent"> Industry News</span>
+            Latest Research &<span className="title-accent"> Publications</span>
           </h2>
           <p className="section-description">
-            Stay updated with the latest research findings, industry trends, and
-            expert insights in intelligent transportation systems.
+            Stay updated with cutting-edge research in information theory,
+            coding systems, and their applications in machine learning,
+            cryptography, and communication networks.
           </p>
         </div>
 
@@ -145,7 +84,7 @@ const BlogNews: React.FC = () => {
                   className="post-category-badge"
                   style={{ backgroundColor: getCategoryColor(post.category) }}
                 >
-                  {post.category}
+                  {BLOG_CATEGORIES[post.category]}
                 </div>
               </div>
 

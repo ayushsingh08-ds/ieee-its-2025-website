@@ -6,29 +6,30 @@ const Introduction: React.FC = () => {
   const features = [
     {
       icon: <Users />,
-      title: "Collaborative Community",
+      title: "Shannon Theory & Fundamental Limits",
       description:
-        "Join a vibrant network of students passionate about intelligent transportation",
+        "Explore the mathematical foundations of information and communication theory",
     },
     {
       icon: <Target />,
-      title: "Research Excellence",
+      title: "Coding & Source Compression",
       description:
-        "Engage in cutting-edge research projects and academic publications",
+        "Study error-correcting codes, data compression, and efficient encoding methods",
     },
     {
       icon: <Lightbulb />,
-      title: "Innovation Hub",
+      title: "Machine Learning Applications",
       description:
-        "Develop innovative solutions for real-world transportation challenges",
+        "Apply information theory principles to ML, biology, and data science",
     },
   ];
 
   const achievements = [
-    "Leading research in autonomous vehicle systems",
-    "Published 50+ research papers in top-tier journals",
-    "Collaborated with industry leaders like Tesla, Google, and Uber",
-    "Won multiple international competition awards",
+    "Access to IEEE Transactions on Information Theory",
+    "Participation in workshops, tutorials, and conferences",
+    "Networking with researchers, faculty, and professionals",
+    "Travel grants, awards, and student competitions",
+    "Digital archives, resources, and lecture materials",
   ];
 
   return (
@@ -38,19 +39,22 @@ const Introduction: React.FC = () => {
           {/* Left Column: Text Content */}
           <div className="introduction-text">
             <div className="introduction-header">
-              <span className="introduction-badge">About IEEE ITS</span>
+              <span className="introduction-badge">About IEEE ITSoc</span>
               <h2 className="introduction-title">
-                Shaping the Future of
+                Advancing the Mathematical
                 <span className="introduction-title-accent">
                   {" "}
-                  Smart Transportation
+                  Foundations of Information
                 </span>
               </h2>
               <p className="introduction-description">
-                Our IEEE Intelligent Transportation Systems Student Chapter is
-                dedicated to advancing the field of smart mobility through
-                innovative research, collaborative projects, and cutting-edge
-                technology development.
+                Our mission is to foster interest and education in information
+                theory among students, provide networking opportunities, and
+                facilitate learning through events, tutorials, and publications.
+                The IEEE Information Theory Society is dedicated to advancing
+                the mathematical foundations of information technology,
+                including the processing, transmission, storage, and use of
+                information.
               </p>
             </div>
 
@@ -76,7 +80,7 @@ const Introduction: React.FC = () => {
             {/* Achievements List */}
             <div className="introduction-achievements">
               <h3 className="introduction-achievements-title">
-                Key Achievements
+                Membership Benefits
               </h3>
               <ul className="introduction-achievements-list">
                 {achievements.map((achievement, index) => (
@@ -93,18 +97,18 @@ const Introduction: React.FC = () => {
           <div className="introduction-visual">
             <div className="introduction-image-container">
               <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Smart Transportation Technology"
+                src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Information Theory and Data Science"
                 className="introduction-image"
               />
               <div className="introduction-image-overlay">
                 <div className="introduction-stats-card">
                   <div className="introduction-stat">
-                    <div className="introduction-stat-number">15+</div>
+                    <div className="introduction-stat-number">70+</div>
                     <div className="introduction-stat-label">Years Active</div>
                   </div>
                   <div className="introduction-stat">
-                    <div className="introduction-stat-number">500+</div>
+                    <div className="introduction-stat-number">100+</div>
                     <div className="introduction-stat-label">Members</div>
                   </div>
                 </div>

@@ -20,29 +20,33 @@ const Hero: React.FC = () => {
           {/* Main Title */}
           <div className="hero-text">
             <h1 className="hero-title">
-              <span className="hero-title-line">BIG STATEMENT</span>
+              <span className="hero-title-line">
+                IEEE Information Theory Society
+              </span>
               <span className="hero-title-line hero-title-accent">
-                GOES HERE
+                Student Chapter
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="hero-subtitle">
-              Driving innovation in Intelligent Transportation Systems through
-              cutting-edge research, collaborative projects, and advancing the
-              future of smart mobility solutions.
+              Empowering the next generation of information theorists. The IEEE
+              Information Theory Society (ITSoc) is the global hub for research
+              and innovation in coding, communication, and information theory.
+              As a Student Chapter, we aim to bring theory closer to students
+              through workshops, reading groups, and hands-on projects.
             </p>
 
             {/* Call-to-Action Buttons */}
             <div className="hero-actions">
               <button className="hero-btn hero-btn-primary">
-                <span>Learn More</span>
+                <span>Join Us</span>
                 <ArrowRight className="hero-btn-icon" />
               </button>
 
               <button className="hero-btn hero-btn-secondary">
                 <Play className="hero-btn-icon" />
-                <span>Watch Video</span>
+                <span>Watch Lectures</span>
               </button>
             </div>
           </div>
@@ -50,20 +54,20 @@ const Hero: React.FC = () => {
           {/* Hero Stats/Features */}
           <div className="hero-stats">
             <div className="hero-stat">
-              <div className="hero-stat-number">500+</div>
+              <div className="hero-stat-number">1951</div>
+              <div className="hero-stat-label">Founded</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-number">100+</div>
               <div className="hero-stat-label">Members</div>
             </div>
             <div className="hero-stat">
-              <div className="hero-stat-number">50+</div>
-              <div className="hero-stat-label">Projects</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hero-stat-number">10+</div>
-              <div className="hero-stat-label">Awards</div>
-            </div>
-            <div className="hero-stat">
               <div className="hero-stat-number">25+</div>
-              <div className="hero-stat-label">Events</div>
+              <div className="hero-stat-label">Workshops</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-number">5+</div>
+              <div className="hero-stat-label">Awards</div>
             </div>
           </div>
         </div>

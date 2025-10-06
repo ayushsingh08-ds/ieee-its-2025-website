@@ -9,9 +9,10 @@ const Header: React.FC = () => {
   const navigationLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Contact", href: "#contact" },
+    { name: "Membership", href: "#membership" },
+    { name: "Events", href: "#events" },
+    { name: "Research", href: "#research" },
+    { name: "Resources", href: "#resources" },
   ];
 
   const toggleMenu = () => {
@@ -31,7 +32,7 @@ const Header: React.FC = () => {
             <span className="logo-text">IEEE</span>
           </div>
           <div className="logo-details">
-            <h1 className="logo-title">IEEE ITS</h1>
+            <h1 className="logo-title">IEEE ITSoc</h1>
             <p className="logo-subtitle">Student Chapter</p>
           </div>
         </div>
