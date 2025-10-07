@@ -1,130 +1,43 @@
-import React, { useState } from "react";
-import { Search, Menu, X, User, ChevronDown } from "lucide-react";
-import "./styles/Header.css";
+import React, { useState, useEffect } from 'react';
+import './styles/Header.css';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const navigationLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Membership", href: "#membership" },
-    { name: "Events", href: "#events" },
-    { name: "Research", href: "#research" },
-    { name: "Resources", href: "#resources" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleProfile = () => {
-    setIsProfileOpen(!isProfileOpen);
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="header">
+    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="header-container">
-        {/* Logo / Branding */}
+        {/* Logo */}
         <div className="header-logo">
-          <div className="logo-icon">
-            <span className="logo-text">IEEE</span>
-          </div>
-          <div className="logo-details">
-            <h1 className="logo-title">IEEE ITSoc</h1>
-            <p className="logo-subtitle">Student Chapter</p>
-          </div>
+          <span className="logo-text">IEEE ITSoc</span>
+          <span className="logo-subtitle">Student Chapter</span>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="header-nav desktop-nav">
+        {/* Navigation Links */}
+        <nav className="header-nav">
           <ul className="nav-list">
-            {navigationLinks.map((link) => (
-              <li key={link.name} className="nav-item">
-                <a href={link.href} className="nav-link">
-                  {link.name}
-                </a>
-              </li>
-            ))}
+            <li><a href="#home" className="nav-link">Home</a></li>
+            <li><a href="#about" className="nav-link">About</a></li>
+            <li><a href="#events" className="nav-link">Events</a></li>
+            <li><a href="#resources" className="nav-link">Resources</a></li>
+            <li><a href="#contact" className="nav-link">Contact</a></li>
           </ul>
         </nav>
 
-        {/* Search Bar and Profile */}
+        {/* Sign In Button */}
         <div className="header-actions">
-          {/* Search Bar */}
-          <div className="search-container">
-            <div className="search-wrapper">
-              <Search className="search-icon" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="search-input"
-              />
-            </div>
-          </div>
-
-          {/* Profile Dropdown */}
-          <div className="profile-container">
-            <button
-              className="profile-button"
-              onClick={toggleProfile}
-              aria-expanded={isProfileOpen}
-            >
-              <User className="profile-icon" />
-              <ChevronDown className="profile-arrow" />
-            </button>
-
-            {/* Profile Dropdown Menu */}
-            {isProfileOpen && (
-              <div className="profile-dropdown">
-                <div className="profile-menu">
-                  <a href="#profile" className="profile-menu-item">
-                    View Profile
-                  </a>
-                  <a href="#settings" className="profile-menu-item">
-                    Settings
-                  </a>
-                  <a href="#logout" className="profile-menu-item">
-                    Logout
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            className="mobile-menu-toggle"
-            onClick={toggleMenu}
-            aria-expanded={isMenuOpen}
-            aria-label="Toggle navigation menu"
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          <button className="signin-btn">Sign In</button>
         </div>
       </div>
-
-      {/* Mobile Navigation Menu */}
-      {isMenuOpen && (
-        <div className="mobile-nav-overlay">
-          <nav className="mobile-nav">
-            <ul className="mobile-nav-list">
-              {navigationLinks.map((link) => (
-                <li key={link.name} className="mobile-nav-item">
-                  <a
-                    href={link.href}
-                    className="mobile-nav-link"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
     </header>
   );
 };

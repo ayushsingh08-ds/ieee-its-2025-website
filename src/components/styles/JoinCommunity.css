@@ -1,0 +1,228 @@
+.join-community {
+  padding: 6rem 0;
+  background: #ffffff;
+}
+
+.join-community-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.feature-card {
+  position: relative;
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(26, 86, 219, 0.15);
+  border-color: #1A56DB;
+}
+
+.feature-card:hover .card-glow {
+  opacity: 0.1;
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1A56DB, #3b82f6);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border: 2px solid #1A56DB;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: linear-gradient(135deg, #1A56DB, #3b82f6);
+  transform: scale(1.1);
+}
+
+.icon-emoji {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .icon-emoji {
+  transform: scale(1.1);
+  filter: brightness(0) invert(1);
+}
+
+.feature-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-title {
+  color: #1A56DB;
+}
+
+.feature-description {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover .feature-description {
+  color: #475569;
+}
+
+/* Card Variants */
+.feature-card:nth-child(1) {
+  background: linear-gradient(135deg, #fef7ff 0%, #f8fafc 100%);
+}
+
+.feature-card:nth-child(2) {
+  background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+}
+
+.feature-card:nth-child(3) {
+  background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+}
+
+/* Hover effects for specific cards */
+.feature-card:nth-child(1):hover {
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+  border-color: #a855f7;
+}
+
+.feature-card:nth-child(1):hover .feature-icon {
+  background: linear-gradient(135deg, #a855f7, #c084fc);
+  border-color: #a855f7;
+}
+
+.feature-card:nth-child(1):hover .feature-title {
+  color: #a855f7;
+}
+
+.feature-card:nth-child(3):hover {
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+  border-color: #22c55e;
+}
+
+.feature-card:nth-child(3):hover .feature-icon {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  border-color: #22c55e;
+}
+
+.feature-card:nth-child(3):hover .feature-title {
+  color: #22c55e;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .join-community {
+    padding: 4rem 0;
+  }
+  
+  .join-community-container {
+    padding: 0 1rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  
+  .feature-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .feature-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .icon-emoji {
+    font-size: 1.75rem;
+  }
+  
+  .feature-title {
+    font-size: 1.5rem;
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+}
