@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import './styles/Header.css';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./styles/Header.css";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,12 +10,12 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
+    <header className={`header ${isScrolled ? "header-scrolled" : ""}`}>
       <div className="header-container">
         {/* Logo */}
         <div className="header-logo">
@@ -25,11 +26,31 @@ const Header = () => {
         {/* Navigation Links */}
         <nav className="header-nav">
           <ul className="nav-list">
-            <li><a href="#home" className="nav-link">Home</a></li>
-            <li><a href="#about" className="nav-link">About</a></li>
-            <li><a href="#events" className="nav-link">Events</a></li>
-            <li><a href="#resources" className="nav-link">Resources</a></li>
-            <li><a href="#contact" className="nav-link">Contact</a></li>
+            <li>
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="nav-link">
+                About
+              </Link>
+            </li>
+            <li>
+              <a href="#events" className="nav-link">
+                Events
+              </a>
+            </li>
+            <li>
+              <a href="#resources" className="nav-link">
+                Resources
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="nav-link">
+                Contact
+              </a>
+            </li>
           </ul>
         </nav>
 

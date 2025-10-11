@@ -3,16 +3,20 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.2);
   z-index: 1000;
   transition: all 0.3s ease;
 }
 
 .header-scrolled {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.3), 0 0 20px rgba(45, 212, 191, 0.1);
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom-color: rgba(45, 212, 191, 0.3);
 }
 
 .header-container {
@@ -33,13 +37,14 @@
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1A56DB;
+  color: #2dd4bf;
   line-height: 1;
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
 }
 
 .logo-subtitle {
   font-size: 0.75rem;
-  color: #64748b;
+  color: #94a3b8;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -61,7 +66,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: #1e293b;
+  color: #e2e8f0;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -70,8 +75,10 @@
 }
 
 .nav-link:hover {
-  color: #1A56DB;
-  background: #f8fafc;
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-link::after {
@@ -81,7 +88,8 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: #1A56DB;
+  background: #2dd4bf;
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.6);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -96,9 +104,11 @@
 }
 
 .signin-btn {
-  background: #1A56DB;
+  background: rgba(45, 212, 191, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   color: white;
-  border: none;
+  border: 1px solid rgba(45, 212, 191, 0.4);
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 600;
@@ -108,9 +118,10 @@
 }
 
 .signin-btn:hover {
-  background: #1e40af;
+  background: rgba(45, 212, 191, 1);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.4), 0 0 15px rgba(45, 212, 191, 0.3);
+  border-color: rgba(45, 212, 191, 0.6);
 }
 
 /* Mobile Responsiveness */

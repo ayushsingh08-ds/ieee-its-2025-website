@@ -30,19 +30,16 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sparksRef = useRef<Spark[]>([]);
-  const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const parent = canvas.parentElement;
-    if (!parent) return;
-
     let resizeTimeout: number | undefined;
 
     const resizeCanvas = () => {
-      const { width, height } = parent.getBoundingClientRect();
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
@@ -54,13 +51,11 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
       resizeTimeout = setTimeout(resizeCanvas, 100);
     };
 
-    const ro = new ResizeObserver(handleResize);
-    ro.observe(parent);
-
+    window.addEventListener("resize", handleResize);
     resizeCanvas();
 
     return () => {
-      ro.disconnect();
+      window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimeout);
     };
   }, []);
@@ -90,10 +85,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     let animationId: number;
 
     const draw = (timestamp: number) => {
-      if (!startTimeRef.current) {
-        startTimeRef.current = timestamp;
-      }
-      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       sparksRef.current = sparksRef.current.filter((spark: Spark) => {
         const elapsed = timestamp - spark.startTime;
@@ -112,12 +104,24 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
         const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
 
+        // Create gradient for sparks with proper transparency
+        const opacity = 1 - eased;
+        const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
+        gradient.addColorStop(0, sparkColor);
+        gradient.addColorStop(1, `${sparkColor}00`); // Transparent end
+
+        ctx.save();
+        ctx.globalAlpha = opacity;
         ctx.strokeStyle = sparkColor;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 2 * (1 - eased * 0.5);
+        ctx.lineCap = "round";
+        ctx.shadowColor = sparkColor;
+        ctx.shadowBlur = 8 * opacity;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.stroke();
+        ctx.restore();
 
         return true;
       });
@@ -140,39 +144,50 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     extraScale,
   ]);
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  // Add global click listener
+  useEffect(() => {
+    const handleGlobalClick = (e: MouseEvent) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
 
-    const now = performance.now();
-    const newSparks: Spark[] = Array.from({ length: sparkCount }, (_, i) => ({
-      x,
-      y,
-      angle: (2 * Math.PI * i) / sparkCount,
-      startTime: now,
-    }));
+      const x = e.clientX;
+      const y = e.clientY;
 
-    sparksRef.current.push(...newSparks);
-  };
+      console.log("Global ClickSpark triggered at:", x, y); // Debug log
+
+      const now = performance.now();
+      const newSparks: Spark[] = Array.from({ length: sparkCount }, (_, i) => ({
+        x,
+        y,
+        angle: (2 * Math.PI * i) / sparkCount,
+        startTime: now,
+      }));
+
+      sparksRef.current.push(...newSparks);
+    };
+
+    document.addEventListener("click", handleGlobalClick);
+    return () => document.removeEventListener("click", handleGlobalClick);
+  }, [sparkCount]);
 
   return (
     <div
       style={{
         width: "100%",
-        height: "100%",
+        minHeight: "100vh",
         position: "relative",
       }}
-      onClick={handleClick}
     >
       <canvas
         ref={canvasRef}
         style={{
-          position: "absolute",
-          inset: 0,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
           pointerEvents: "none",
+          zIndex: 1001,
         }}
       />
       {children}
